@@ -189,6 +189,9 @@ return [
     |
     */
 
-    'attributes' => [],
+    'attributes' => [
+        'playeroneid' => 'Pemain A',
+        'playertwoid' => 'Pemain B',
+    ],
 
 ];

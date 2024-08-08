@@ -40,7 +40,7 @@
                     <div class="mt-2">
                         <button type="submit"
                             class="text-white bg-green-700 font-medium rounded-lg px-5 py-2.5 me-2 mb-2">Tambah</button>
-                        <a href="/dashboard/players"
+                        <a href="{{ route('players.index') }}"
                             class="text-white bg-gray-500 font-medium rounded-lg px-5 py-2.5 me-2 mb-2">Kembali</a>
                     </div>
                 </div>

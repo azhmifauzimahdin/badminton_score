@@ -14,3 +14,18 @@ td,
 th {
     padding: 0.5rem;
 }
+
+.select2.select2-container .select2-selection {
+    height: 2.5rem;
+    padding-top: 0.25rem;
+    background-color: rgb(249 250 251 / 1);
+    border-color: rgb(209 213 219 / 1);
+    color: rgb(17 24 39 / 1);
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    border-radius: 0.5rem;
+}
+
+.select2-selection__arrow {
+    margin-top: 0.25rem;
+}

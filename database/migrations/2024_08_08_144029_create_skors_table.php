@@ -11,10 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('fights', function (Blueprint $table) {
+        Schema::create('skors', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('playeroneid');
-            $table->unsignedBigInteger('playertwoid');
+            $table->unsignedBigInteger('fightid');
+            $table->integer('set')->default(0);
+            $table->integer('skorplayerone');
+            $table->integer('skorplayertwo');
             $table->timestamp('startdate');
             $table->timestamp('enddate');
             $table->timestamps();
@@ -26,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('fights');
+        Schema::dropIfExists('skors');
     }
 };

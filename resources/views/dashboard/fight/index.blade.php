@@ -3,7 +3,7 @@
 @section('container')
     <div class="rounded shadow-sm bg-white overflow-hidden">
         <div class="border-b border-slate-800/15 px-4 py-3 text-lg">
-            Data Pemain
+            Data Pertandingan
         </div>
         <div class="p-4">
             @if (session()->has('success'))
@@ -12,7 +12,7 @@
                 </div>
             @endif
             <div class="mb-2">
-                <a href="{{ route('players.create') }}">
+                <a href="{{ route('fights.create') }}">
                     <button class="text-white bg-blue-700 font-medium rounded-lg px-5 py-2.5 me-2 mb-2">
                         Tambah
                         Data</button>
@@ -23,34 +23,35 @@
                     <thead class="text-left">
                         <tr>
                             <th>NO</th>
-                            <th>NAMA</th>
-                            <th>KETERANGAN</th>
-                            <th>FOTO</th>
+                            <th class="text-nowrap">PEMAIN A</th>
+                            <th class="text-nowrap">PEMAIN B</th>
+                            <th>JADWAL</th>
                             <th>AKSI</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @forelse ($players as $index => $player)
+                        @forelse ($fights as $index => $fight)
                             <tr class="odd:bg-gray-50 even:bg-gray-100">
-                                <td>{{ $index + $players->firstItem() }}</td>
-                                <td>{{ $player->name }}</td>
-                                <td>{{ $player->description }}</td>
-                                <td>
-                                    <img src="{{ asset('/storage/player/' . $player->image) }}" alt="{{ $player->name }}"
-                                        width="200">
+                                <td>{{ $index + $fights->firstItem() }}</td>
+                                <td class="text-nowrap">{{ $fight->playerone->name }}</td>
+                                <td class="text-nowrap">{{ $fight->playertwo->name }}</td>
+                                <td><span
+                                        class="text-nowrap">{{ \Carbon\Carbon::parse($fight->startdate)->format('d/m/Y H:i') }}
+                                        - </span>
+                                    <span
+                                        class="text-nowrap">{{ \Carbon\Carbon::parse($fight->enddate)->format('d/m/Y H:i') }}</span>
                                 </td>
                                 <td class="text-nowrap">
-                                    <a href="{{ route('players.edit', $player->id) }}">
+                                    <a href="{{ route('fights.edit', $fight->id) }}">
                                         <button id="check" class="text-white bg-yellow-400 rounded-lg px-2.5 py-1 me-1">
                                             <i class="fa-regular fa-pen-to-square"></i>
                                         </button>
                                     </a>
-                                    <form action="{{ route('players.destroy', $player->id) }}" method="POST"
-                                        class="inline">
+                                    <form action="{{ route('fights.destroy', $fight->id) }}" method="POST" class="inline">
                                         @method('delete')
                                         @csrf
                                         <button type="submit"
-                                            class="delete_player text-white bg-red-700 rounded-lg px-2.5 py-1 me-1">
+                                            class="delete_fight text-white bg-red-700 rounded-lg px-2.5 py-1 me-1">
                                             <i class="fa-solid fa-trash"></i>
                                         </button>
                                     </form>
@@ -71,7 +72,7 @@
 
 @push('script')
     <script>
-        $('.delete_player').click(function(event) {
+        $('.delete_fight').click(function(event) {
             var form = $(this).closest("form");
             event.preventDefault();
             Swal.fire({

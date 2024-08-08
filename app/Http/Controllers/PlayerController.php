@@ -83,16 +83,16 @@ class PlayerController extends Controller
             ]);
         }
 
-        return redirect()->route('players.index')->with(['success' => 'Data Berhasil Dubah']);
+        return redirect()->route('players.index')->with(['success' => 'Data Berhasil Diubah']);
     }
 
     public function destroy($id): RedirectResponse
     {
-        // $player = Player::findOrFail($id);
+        $player = Player::findOrFail($id);
 
-        // Storage::delete('public/player/' . $player->image);
+        Storage::delete('public/player/' . $player->image);
 
-        // $player->delete();
+        $player->delete();
 
         return redirect()->route('players.index')->with(['success' => 'Data Berhasil Dihapus']);
     }
