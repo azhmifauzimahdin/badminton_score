@@ -3,7 +3,7 @@
 @section('container')
     <div class="rounded shadow-sm bg-white overflow-hidden">
         <div class="border-b border-slate-800/15 px-4 py-3 text-lg">
-            Data Pertandingan
+            Data Foto
         </div>
         <div class="p-4">
             @if (session()->has('success'))
@@ -12,7 +12,7 @@
                 </div>
             @endif
             <div class="mb-2">
-                <a href="{{ route('fights.create') }}">
+                <a href="{{ route('galleries.create') }}">
                     <button class="text-white bg-blue-700 font-medium rounded-lg px-5 py-2.5 me-2 mb-2">
                         Tambah
                         Data</button>
@@ -23,35 +23,32 @@
                     <thead class="text-left">
                         <tr>
                             <th>NO</th>
-                            <th class="text-nowrap">PEMAIN A</th>
-                            <th class="text-nowrap">PEMAIN B</th>
-                            <th>VENUE</th>
-                            <th>COURT</th>
-                            <th>JADWAL</th>
+                            <th>KETERANGAN</th>
+                            <th>FOTO</th>
                             <th>AKSI</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @forelse ($fights as $index => $fight)
+                        @forelse ($galleries as $index => $gallery)
                             <tr class="odd:bg-gray-50 even:bg-gray-100">
                                 <td>{{ $index + 1 }}</td>
-                                <td class="text-nowrap">{{ $fight->playerone->name }}</td>
-                                <td class="text-nowrap">{{ $fight->playertwo->name }}</td>
-                                <td>{{ $fight->venue }}</td>
-                                <td class="text-center">{{ $fight->court }}</td>
-                                <td class="text-nowrap">{{ \Carbon\Carbon::parse($fight->startdate)->format('d/m/Y H:i') }}
+                                <td>{{ $gallery->description }}</td>
+                                <td>
+                                    <img src="{{ asset('/storage/galleries/' . $gallery->image) }}"
+                                        alt="{{ $gallery->description }}" width="80">
                                 </td>
                                 <td class="text-nowrap">
-                                    <a href="{{ route('fights.edit', $fight->id) }}">
+                                    <a href="{{ route('galleries.edit', $gallery->id) }}">
                                         <button id="check" class="text-white bg-yellow-400 rounded-lg px-2.5 py-1 me-1">
                                             <i class="fa-regular fa-pen-to-square"></i>
                                         </button>
                                     </a>
-                                    <form action="{{ route('fights.destroy', $fight->id) }}" method="POST" class="inline">
+                                    <form action="{{ route('galleries.destroy', $gallery->id) }}" method="POST"
+                                        class="inline">
                                         @method('delete')
                                         @csrf
                                         <button type="submit"
-                                            class="delete_fight text-white bg-red-700 rounded-lg px-2.5 py-1 me-1">
+                                            class="delete_gallery text-white bg-red-700 rounded-lg px-2.5 py-1 me-1">
                                             <i class="fa-solid fa-trash"></i>
                                         </button>
                                     </form>
@@ -72,7 +69,7 @@
 
 @push('script')
     <script>
-        $('.delete_fight').click(function(event) {
+        $('.delete_gallery').click(function(event) {
             var form = $(this).closest("form");
             event.preventDefault();
             Swal.fire({

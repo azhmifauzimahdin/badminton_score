@@ -16,11 +16,24 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
     @vite('resources/css/app.css')
     <title>{{ $title }}</title>
+    <style>
+        .bg-blob {
+            background-image: url({{ asset('storage/assets/blob.svg') }});
+            background-size: 100% 100%;
+        }
+
+        .bg-blob-white {
+            background-image: url({{ asset('storage/assets/blobWhite.svg') }});
+            background-size: 100% 100%;
+        }
+    </style>
 </head>
 
 <body>
+    @include('dashboard.layouts.navbar')
     <div class="container mx-auto p-4 min-h-screen text-gray-800">
         @yield('container')
     </div>

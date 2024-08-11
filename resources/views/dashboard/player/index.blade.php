@@ -11,6 +11,11 @@
                     {{ session('success') }}
                 </div>
             @endif
+            @if (session()->has('failed'))
+                <div class="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50" role="alert">
+                    {{ session('failed') }}
+                </div>
+            @endif
             <div class="mb-2">
                 <a href="{{ route('players.create') }}">
                     <button class="text-white bg-blue-700 font-medium rounded-lg px-5 py-2.5 me-2 mb-2">
@@ -32,12 +37,12 @@
                     <tbody>
                         @forelse ($players as $index => $player)
                             <tr class="odd:bg-gray-50 even:bg-gray-100">
-                                <td>{{ $index + $players->firstItem() }}</td>
+                                <td>{{ $index + 1 }}</td>
                                 <td>{{ $player->name }}</td>
                                 <td>{{ $player->description }}</td>
                                 <td>
                                     <img src="{{ asset('/storage/player/' . $player->image) }}" alt="{{ $player->name }}"
-                                        width="200">
+                                        width="80">
                                 </td>
                                 <td class="text-nowrap">
                                     <a href="{{ route('players.edit', $player->id) }}">

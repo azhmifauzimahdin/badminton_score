@@ -12,7 +12,7 @@ class FightController extends Controller
 {
     public function index(): View
     {
-        $fights = Fight::latest()->paginate(10);
+        $fights = Fight::orderby('startdate')->get();
         return view('dashboard.fight.index', [
             'title' => 'Pertandingan',
             'fights' => $fights
@@ -33,8 +33,9 @@ class FightController extends Controller
         $data = $request->validate([
             'playeroneid' => 'required',
             'playertwoid' => 'required|different:playeroneid',
-            'startdate' => 'required|date|after_or_equal:now',
-            'enddate' => 'required|date|after:startdate'
+            'venue' => 'required',
+            'court' => 'required',
+            'startdate' => 'required|date|after_or_equal:now'
         ]);
         Fight::create($data);
 
@@ -58,8 +59,9 @@ class FightController extends Controller
         $data = $request->validate([
             'playeroneid' => 'required',
             'playertwoid' => 'required|different:playeroneid',
-            'startdate' => 'required|date',
-            'enddate' => 'required|date|after:startdate'
+            'venue' => 'required',
+            'court' => 'required',
+            'startdate' => 'required|date'
         ]);
 
         $fight = Fight::findOrFail($id);

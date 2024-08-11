@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Fight;
 use App\Models\Player;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -12,7 +13,7 @@ class PlayerController extends Controller
 {
     public function index(): View
     {
-        $players =  Player::latest()->paginate(10);
+        $players =  Player::latest()->get();
 
         return view('dashboard.player.index', [
             'title' => 'Pemain',
@@ -89,6 +90,11 @@ class PlayerController extends Controller
     public function destroy($id): RedirectResponse
     {
         $player = Player::findOrFail($id);
+
+        $fight = Fight::where('playeroneid', $id)->orwhere('playertwoid', $id)->get();
+        if ($fight->count() > 0) {
+            return redirect()->route('players.index')->with(['failed' => 'Data tidak bisa dihapus karena sudah terjadwal pertandingan']);
+        }
 
         Storage::delete('public/player/' . $player->image);
 

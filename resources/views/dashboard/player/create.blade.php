@@ -1,7 +1,7 @@
 @extends('dashboard/layouts/main')
 
 @section('container')
-    <div class="rounded shadow-sm bg-white overflow-hidden">
+    <div class="rounded shadow-sm bg-white overflow-hidden md:w-8/12 mx-auto">
         <div class="border-b border-slate-800/15 px-4 py-3 text-lg">
             Tambah Data Pemain
         </div>

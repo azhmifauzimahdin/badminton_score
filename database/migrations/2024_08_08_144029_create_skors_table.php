@@ -14,11 +14,12 @@ return new class extends Migration
         Schema::create('skors', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('fightid');
-            $table->integer('set')->default(0);
-            $table->integer('skorplayerone');
-            $table->integer('skorplayertwo');
-            $table->timestamp('startdate');
-            $table->timestamp('enddate');
+            $table->integer('set')->default(1);
+            $table->integer('skorplayerone')->default(0);
+            $table->integer('skorplayertwo')->default(0);
+            $table->timestamp('startdate')->nullable();
+            $table->timestamp('enddate')->nullable();
+            $table->boolean('status')->default(false);
             $table->timestamps();
         });
     }

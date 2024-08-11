@@ -1,7 +1,7 @@
 @extends('dashboard/layouts/main')
 
 @section('container')
-    <div class="rounded shadow-sm bg-white overflow-hidden">
+    <div class="rounded shadow-sm bg-white overflow-hidden md:w-8/12 mx-auto">
         <div class="border-b border-slate-800/15 px-4 py-3 text-lg">
             Edit Data Pertandingan
         </div>
@@ -39,6 +39,24 @@
                         @enderror
                     </div>
                     <div>
+                        <label for="venue" class="block mb-2">Venue</label>
+                        <input type="text" name="venue"
+                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                            placeholder="Venue" value="{{ old('venue', $fight->venue) }}">
+                        @error('venue')
+                            <span class="text-red-600 text-xs">{{ $message }}</span>
+                        @enderror
+                    </div>
+                    <div>
+                        <label for="court" class="block mb-2">Court</label>
+                        <input type="text" name="court"
+                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                            placeholder="Court" value="{{ old('court', $fight->court) }}">
+                        @error('court')
+                            <span class="text-red-600 text-xs">{{ $message }}</span>
+                        @enderror
+                    </div>
+                    <div>
                         <label for="startdate" class="block mb-2">Waktu Mulai</label>
                         <input type="datetime-local" name="startdate"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
@@ -47,19 +65,10 @@
                             <span class="text-red-600 text-xs">{{ $message }}</span>
                         @enderror
                     </div>
-                    <div>
-                        <label for="enddate" class="block mb-2">Waktu Mulai</label>
-                        <input type="datetime-local" name="enddate"
-                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                            placeholder="Waktu Mulai" value="{{ old('enddate', $fight->enddate) }}">
-                        @error('enddate')
-                            <span class="text-red-600 text-xs">{{ $message }}</span>
-                        @enderror
-                    </div>
                     <div class="mt-2">
                         <button type="submit"
-                            class="text-white bg-green-700 font-medium rounded-lg px-5 py-2.5 me-2 mb-2">Tambah</button>
-                        <a href="/dashboard/players"
+                            class="text-white bg-green-700 font-medium rounded-lg px-5 py-2.5 me-2 mb-2">Update</button>
+                        <a href="{{ route('fights.index') }}"
                             class="text-white bg-gray-500 font-medium rounded-lg px-5 py-2.5 me-2 mb-2">Kembali</a>
                     </div>
                 </div>
