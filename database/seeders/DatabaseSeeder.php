@@ -141,36 +141,74 @@ class DatabaseSeeder extends Seeder
             'venue' => 'Mertakanda Hall',
             'startdate' => '2024-08-11 23:00:00'
         ]);
-        Fight::create([
-            'playeroneid' => 1,
-            'playertwoid' => 3,
-            'venue' => 'Mertakanda Hall',
-            'startdate' => '2024-08-11 11:00:00'
-        ]);
 
+        // Gallery::create([
+        //     'description' => 'Mantap Jiwa',
+        //     'image' => 'galery1.jpg'
+        // ]);
         Gallery::create([
             'description' => 'Mantap Jiwa',
-            'image' => 'galery1.jpg'
+            'image' => 'https://cc-prod.scene7.com/is/image/CCProdAuthor/product-photography_P3B_720x350?$pjpeg$&jpegSize=200&wid=720'
         ]);
         Gallery::create([
             'description' => 'Mantap Jiwa',
-            'image' => 'galery1.jpg'
+            'image' => 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSG9YAJBxbFPrjI5u4Dy9oHDY0Pwswv4xYmSg&usqp=CAU'
         ]);
         Gallery::create([
             'description' => 'Mantap Jiwa',
-            'image' => 'galery1.jpg'
+            'image' => 'https://i.pinimg.com/736x/2f/03/47/2f0347d14901bb9fa7003c37ff7df8f0.jpg'
         ]);
         Gallery::create([
             'description' => 'Mantap Jiwa',
-            'image' => 'galery1.jpg'
+            'image' => 'https://plazakamera.com/wp-content/uploads/2017/11/629c51d7a80801ef5ecff9398a4c9d6a-product-photography-lighting-shape-photography.jpg'
         ]);
         Gallery::create([
             'description' => 'Mantap Jiwa',
-            'image' => 'galery1.jpg'
+            'image' => 'https://www.itb.ac.id/files/dokumentasi/1602643049-ilustrasi---product.png'
         ]);
         Gallery::create([
             'description' => 'Mantap Jiwa',
-            'image' => 'galery1.jpg'
+            'image' => 'https://img.freepik.com/free-photo/skin-products-arrangement-wooden-blocks_23-2148761445.jpg'
+        ]);
+        Gallery::create([
+            'description' => 'Mantap Jiwa',
+            'image' => 'https://photography.serviamo.id/wp-content/uploads/2021/03/chandra-oh-yuvFnxtHE_g-unsplash-scaled-1.jpg'
+        ]);
+        Gallery::create([
+            'description' => 'Mantap Jiwa',
+            'image' => 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQZfJ4j7UxD1hdivtPjxc-4OyAyu-DVFPIGWw&usqp=CAU'
+        ]);
+        Gallery::create([
+            'description' => 'Mantap Jiwa',
+            'image' => 'https://cc-prod.scene7.com/is/image/CCProdAuthor/product-photography_P3B_720x350?$pjpeg$&jpegSize=200&wid=720'
+        ]);
+        Gallery::create([
+            'description' => 'Mantap Jiwa',
+            'image' => 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSG9YAJBxbFPrjI5u4Dy9oHDY0Pwswv4xYmSg&usqp=CAU'
+        ]);
+        Gallery::create([
+            'description' => 'Mantap Jiwa',
+            'image' => 'https://i.pinimg.com/736x/2f/03/47/2f0347d14901bb9fa7003c37ff7df8f0.jpg'
+        ]);
+        Gallery::create([
+            'description' => 'Mantap Jiwa',
+            'image' => 'https://plazakamera.com/wp-content/uploads/2017/11/629c51d7a80801ef5ecff9398a4c9d6a-product-photography-lighting-shape-photography.jpg'
+        ]);
+        Gallery::create([
+            'description' => 'Mantap Jiwa',
+            'image' => 'https://www.itb.ac.id/files/dokumentasi/1602643049-ilustrasi---product.png'
+        ]);
+        Gallery::create([
+            'description' => 'Mantap Jiwa',
+            'image' => 'https://img.freepik.com/free-photo/skin-products-arrangement-wooden-blocks_23-2148761445.jpg'
+        ]);
+        Gallery::create([
+            'description' => 'Mantap Jiwa',
+            'image' => 'https://photography.serviamo.id/wp-content/uploads/2021/03/chandra-oh-yuvFnxtHE_g-unsplash-scaled-1.jpg'
+        ]);
+        Gallery::create([
+            'description' => 'Mantap Jiwa',
+            'image' => 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQZfJ4j7UxD1hdivtPjxc-4OyAyu-DVFPIGWw&usqp=CAU'
         ]);
     }
 }

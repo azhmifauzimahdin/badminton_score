@@ -95,11 +95,11 @@ class GalleryController extends Controller
 
     public function galleries(): View
     {
-        $span = [2, 1, 1, 1, 1, 2];
         $galleries = Gallery::get();
         return view('user.foto', [
             'title' => 'Foto',
-            'galleries' => $galleries
+            'galleries' => $galleries,
+            'lengthGalleries' => $galleries->count(),
         ]);
     }
 }
