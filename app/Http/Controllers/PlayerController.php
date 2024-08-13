@@ -71,7 +71,9 @@ class PlayerController extends Controller
             $image = $request->file('image');
             $image->storeAs('public/player/', $image->hashName());
 
-            Storage::delete('public/player/' . $player->image);
+            if ($player->image != 'playerdefault0.png' && $player->image != 'playerdefault1.png' && $player->image != 'playerdoubledefault.png') {
+                Storage::delete('public/player/' . $player->image);
+            }
             $player->update([
                 'name' => $request->name,
                 'description' => $request->description,
@@ -96,7 +98,9 @@ class PlayerController extends Controller
             return redirect()->route('players.index')->with(['failed' => 'Data tidak bisa dihapus karena sudah terjadwal pertandingan']);
         }
 
-        Storage::delete('public/player/' . $player->image);
+        if ($player->image != 'playerdefault0.png' && $player->image != 'playerdefault1.png' && $player->image != 'playerdoubledefault.png') {
+            Storage::delete('public/player/' . $player->image);
+        }
 
         $player->delete();
 

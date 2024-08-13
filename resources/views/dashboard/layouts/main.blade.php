@@ -34,7 +34,7 @@
 
 <body>
     @include('dashboard.layouts.navbar')
-    <div class="container mx-auto p-4 min-h-screen text-gray-800">
+    <div class="container mx-auto p-4 min-h-screen text-gray-800 bg-[#f0f0f0]">
         @yield('container')
     </div>
 

@@ -22,9 +22,9 @@
 @endpush
 
 @section('container')
-    <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+    <div class="grid grid-cols-2 md:grid-cols-5 gap-4">
         @for ($i = 0; $i < $lengthGalleries; $i += 3)
-            <div class="flex flex-col gap-4">
+            <div class="col-span-1 flex flex-col gap-4">
                 @if (($i / 3) % 2 != 1)
                     <div class="bg-gray-400 rounded-lg flex-1 bg-image"></div>
                 @endif
