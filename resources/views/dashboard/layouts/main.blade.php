@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="h-full bg-gray-100">
 
 <head>
     <meta charset="UTF-8">
@@ -18,7 +18,7 @@
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
-    @vite('resources/css/app.css')
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
     <title>{{ $title }}</title>
     <style>
         .bg-blob {
@@ -33,12 +33,19 @@
     </style>
 </head>
 
-<body>
-    @include('dashboard.layouts.navbar')
-    <div class="container mx-auto p-4 min-h-screen text-gray-800 bg-[#f0f0f0]">
-        @yield('container')
+<body class="h-full">
+    <div class="antialiased min-h-screen bg-gray-100 dark:bg-gray-900">
+        @include('dashboard.layouts.navbar')
+        @include('dashboard.layouts.sidebar')
+        <main class="p-4 md:ml-64 h-auto pt-16">
+            <div class="flex flex-col gap-1 md:flex-row md:justify-between md:items-center mb-4">
+                <div class="font-medium text-2xl text-gray-900">{{ $title }}</div>
+                <div class="text-xs md:text-sm"><span class="text-blue-700">Home</span> / {{ $title }}</div>
+            </div>
+            @yield('container')
+        </main>
     </div>
-
+    <script src="../path/to/flowbite/dist/flowbite.min.js"></script>
     @stack('script')
 </body>
 

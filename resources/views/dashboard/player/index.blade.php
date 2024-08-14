@@ -18,7 +18,7 @@
             @endif
             <div class="flex justify-between mb-2">
                 <a href="{{ route('players.create') }}">
-                    <button class="text-white bg-blue-700 font-medium rounded-lg px-5 py-2.5 me-2 mb-2">
+                    <button class="text-white text-nowrap bg-blue-700 font-medium rounded-lg px-5 py-2.5 me-2 mb-2">
                         Tambah
                         Data</button>
                 </a>
@@ -46,7 +46,7 @@
                         @forelse ($players as $index => $player)
                             <tr class="odd:bg-gray-50 even:bg-gray-100">
                                 <td>{{ $index + $players->firstItem() }}</td>
-                                <td>{{ $player->name }}</td>
+                                <td class="text-nowrap">{{ $player->name }}</td>
                                 <td>{{ $player->description }}</td>
                                 <td>
                                     <img src="{{ asset('/storage/player/' . $player->image) }}" alt="{{ $player->name }}"

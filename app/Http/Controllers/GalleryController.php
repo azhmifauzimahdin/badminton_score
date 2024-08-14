@@ -16,7 +16,7 @@ class GalleryController extends Controller
     {
         $galleries = Gallery::filter(request(['search']))->latest()->paginate(10)->withQueryString();
         return view('dashboard.gallery.index', [
-            'title' => 'Foto',
+            'title' => 'Data Foto',
             'galleries' => $galleries
         ]);
     }
@@ -24,7 +24,7 @@ class GalleryController extends Controller
     public function create(): View
     {
         return view('dashboard.gallery.create', [
-            'title' => 'Tambah Foto'
+            'title' => 'Tambah Data Foto'
         ]);
     }
 
@@ -51,7 +51,7 @@ class GalleryController extends Controller
         $gallery = Gallery::findOrFail($id);
 
         return view('dashboard.gallery.edit', [
-            'title' => 'Edit Foto',
+            'title' => 'Edit Data Foto',
             'gallery' => $gallery
         ]);
     }

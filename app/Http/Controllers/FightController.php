@@ -14,7 +14,7 @@ class FightController extends Controller
     {
         $fights = Fight::orderby('startdate')->filter(request(['search']))->paginate(10)->withQueryString();
         return view('dashboard.fight.index', [
-            'title' => 'Pertandingan',
+            'title' => 'Data Pertandingan',
             'fights' => $fights
         ]);
     }
@@ -23,7 +23,7 @@ class FightController extends Controller
     {
         $players = Player::get();
         return view('dashboard.fight.create', [
-            'title' => 'Tambah Pertandingan',
+            'title' => 'Tambah Data Pertandingan',
             'players' => $players
         ]);
     }
@@ -48,7 +48,7 @@ class FightController extends Controller
         $players = Player::get();
 
         return view('dashboard.fight.edit', [
-            'title' => 'Edit Pertandingan',
+            'title' => 'Edit Data Pertandingan',
             'fight' => $fight,
             'players' => $players
         ]);

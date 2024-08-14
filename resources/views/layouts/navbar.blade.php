@@ -4,7 +4,7 @@
             <div class="flex items-center">
                 <div class="flex-shrink-0">
                     <a href="{{ route('homepage') }}">
-                        <img class="h-8 w-8" src="{{ asset('storage/assets/logo.png') }}" alt="Your Company">
+                        <img class="h-8 w-8" src="{{ asset('storage/assets/logo.png') }}" alt="Logo">
                     </a>
                 </div>
                 <div class="hidden md:block">

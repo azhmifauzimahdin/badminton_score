@@ -17,6 +17,5 @@ Route::resource('/dashboard/skors', SkorController::class)->except('show');
 Route::resource('/dashboard/galleries', GalleryController::class)->except('show');
 Route::get('/galleries', [GalleryController::class, 'galleries'])->name('gallery');
 
-
 Route::get('/liveskor/{id}', [HomepageController::class, 'liveSkor'])->name('liveskor');
 Route::get('/liveskor', [HomepageController::class, 'liveskorNow'])->name('liveskornow');

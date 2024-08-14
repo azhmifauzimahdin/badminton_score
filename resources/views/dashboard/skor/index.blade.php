@@ -10,7 +10,7 @@
 @endpush
 
 @section('container')
-    <div class="grid gap-2 md:w-8/12 mx-auto">
+    <div class="grid gap-2 md:grid-cols-2">
         @forelse ($fightsNow as $fightNow)
             <div class="bg-white rounded-xl p-3 gap-6">
                 <div class="text-xs text-center text-slate-800">{{ $fightNow->venue }} [Court {{ $fightNow->court }}]</div>
@@ -51,7 +51,7 @@
                 </div>
             </div>
         @empty
-            <div class="text-center text-sm">Tidak ada pertandingan berlangsung</div>
+            <div class="text-center text-sm md:col-span-2">Tidak ada pertandingan berlangsung</div>
         @endforelse
     </div>
 @endsection

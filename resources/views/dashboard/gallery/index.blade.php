@@ -13,7 +13,7 @@
             @endif
             <div class="flex justify-between mb-2">
                 <a href="{{ route('galleries.create') }}">
-                    <button class="text-white bg-blue-700 font-medium rounded-lg px-5 py-2.5 me-2 mb-2">
+                    <button class="text-white text-nowrap bg-blue-700 font-medium rounded-lg px-5 py-2.5 me-2 mb-2">
                         Tambah
                         Data</button>
                 </a>

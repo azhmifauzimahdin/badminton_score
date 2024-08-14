@@ -16,7 +16,7 @@ class PlayerController extends Controller
         $players =  Player::filter(request(['search']))->latest()->paginate(10)->withQueryString();
 
         return view('dashboard.player.index', [
-            'title' => 'Pemain',
+            'title' => 'Data Pemain',
             'players' => $players
         ]);
     }
@@ -24,7 +24,7 @@ class PlayerController extends Controller
     public function create(): View
     {
         return view('dashboard.player.create', [
-            'title' => 'Tambah Pemain'
+            'title' => 'Tambah Data Pemain'
         ]);
     }
 
@@ -53,7 +53,7 @@ class PlayerController extends Controller
         $player = Player::findOrFail($id);
 
         return view('dashboard.player.edit', [
-            'title' => 'Edit Pemain',
+            'title' => 'Edit Data Pemain',
             'player' => $player
         ]);
     }

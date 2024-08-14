@@ -1,7 +1,7 @@
 @extends('dashboard/layouts/main')
 
 @section('container')
-    <div class="rounded shadow-sm bg-white overflow-hidden md:w-8/12 mx-auto">
+    <div class="rounded shadow-sm bg-white overflow-hidden md:w-8/12">
         <div class="border-b border-slate-800/15 px-4 py-3 text-lg">
             Tambah Data Pertandingan
         </div>
@@ -66,9 +66,12 @@
                     </div>
                     <div class="mt-2">
                         <button type="submit"
-                            class="text-white bg-green-700 font-medium rounded-lg px-5 py-2.5 me-2 mb-2">Tambah</button>
-                        <a href="{{ route('fights.index') }}"
-                            class="text-white bg-gray-500 font-medium rounded-lg px-5 py-2.5 me-2 mb-2">Kembali</a>
+                            class="text-white bg-blue-700 font-medium rounded-lg px-5 py-2.5 me-2">Tambah</button>
+                        <a href="{{ route('fights.index') }}">
+                            <button type="button" class="text-white bg-gray-500 font-medium rounded-lg px-5 py-2.5 me-2">
+                                Kembali
+                            </button>
+                        </a>
                     </div>
                 </div>
             </form>

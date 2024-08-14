@@ -1,7 +1,7 @@
 @extends('dashboard/layouts/main')
 
 @section('container')
-    <div class="bg-white p-4 rounded-lg md:w-8/12 mx-auto mb-3 border border-slate-500/20">
+    <div class="bg-white p-4 rounded-lg md:w-8/12 mb-3 border border-slate-500/20">
         <p class="text-sm text-center opacity-80 mb-4">{{ $fight->venue }} [Court {{ $fight->court }}] |
             {{ \Carbon\Carbon::parse($fight->startdate)->format('H:i') }} WIB</p>
         <div class="grid grid-cols-3">

@@ -1,76 +1,54 @@
-<nav class="bg-gray-800" x-data="{ isOpen: false }">
-    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div class="flex h-16 items-center justify-between">
-            <div class="flex items-center">
-                <div class="flex-shrink-0">
-                    <a href="{{ route('fights.index') }}">
-                        <img class="h-8 w-8" src="{{ asset('storage/assets/logo.png') }}" alt="Your Company">
-                    </a>
-                </div>
-                <div class="hidden md:block">
-                    <div class="ml-10 flex items-baseline space-x-4">
-                        <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-                        <a href="{{ route('fights.index') }}"
-                            class="{{ request()->is('dashboard/fights*') ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white' }} rounded-md px-3 py-2 text-sm font-medium text-white"
-                            aria-current="{{ request()->is('dashboard/fights*') ? 'page' : false }}">Pertandingan</a>
-                        <a href="{{ route('players.index') }}"
-                            class="{{ request()->is('dashboard/players*') ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white' }} rounded-md px-3 py-2 text-sm font-medium text-white"
-                            aria-current="{{ request()->is('dashboard/players*') ? 'page' : false }}">Pemain</a>
-                        <a href="{{ route('skors.index') }}"
-                            class="{{ request()->is('dashboard/skors*') ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white' }} rounded-md px-3 py-2 text-sm font-medium text-white"
-                            aria-current="{{ request()->is('dashboard/skors*') ? 'page' : false }}">Control Skor</a>
-                        <a href="{{ route('galleries.index') }}"
-                            class="{{ request()->is('dashboard/galleries*') ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white' }} rounded-md px-3 py-2 text-sm font-medium text-white"
-                            aria-current="{{ request()->is('dashboard/galleries*') ? 'page' : false }}">Gallery</a>
-                        <a href="{{ route('homepage') }}"
-                            class="{{ request()->is('/') ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white' }} rounded-md px-3 py-2 text-sm font-medium text-white"
-                            aria-current="{{ request()->is('/') ? 'page' : false }}">Live</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="-mr-2 flex md:hidden">
-                <!-- Mobile menu button -->
-                <button type="button" @click="isOpen = !isOpen"
-                    class="relative inline-flex items-center justify-center rounded-md bg-gray-800 p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
-                    aria-controls="mobile-menu" aria-expanded="false">
-                    <span class="absolute -inset-0.5"></span>
-                    <span class="sr-only">Open main menu</span>
-                    <!-- Menu open: "hidden", Menu closed: "block" -->
-                    <svg :class="{ 'hidden': isOpen, 'block': !isOpen }" class="block h-6 w-6" fill="none"
-                        viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
-                        <path stroke-linecap="round" stroke-linejoin="round"
-                            d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
-                    </svg>
-                    <!-- Menu open: "block", Menu closed: "hidden" -->
-                    <svg :class="{ 'block': isOpen, 'hidden': !isOpen }" class="hidden h-6 w-6" fill="none"
-                        viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-                    </svg>
-                </button>
-            </div>
+<nav
+    class="bg-gray-800 text-white border-b px-4 py-2.5 dark:bg-gray-800 dark:border-gray-700 fixed left-0 right-0 top-0 z-50">
+    <div class="flex flex-wrap justify-between items-center">
+        <div class="flex justify-start items-center">
+            <button data-drawer-target="drawer-navigation" data-drawer-toggle="drawer-navigation"
+                aria-controls="drawer-navigation"
+                class="p-2 mr-2 text-white rounded-lg cursor-pointer md:hidden hover:text-gray-900 hover:bg-gray-100 focus:bg-gray-100 dark:focus:bg-gray-700 focus:ring-2 focus:ring-gray-100 dark:focus:ring-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
+                <svg aria-hidden="true" class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd"
+                        d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h6a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
+                        clip-rule="evenodd"></path>
+                </svg>
+                <span class="sr-only">Toggle sidebar</span>
+            </button>
+            <a href="{{ route('fights.index') }}" class="flex items-center justify-between mr-4">
+                <img src="{{ asset('storage/assets/logo.png') }}" class="mr-1 h-8" alt="Logo" />
+                <span class="self-center text-xl font-semibold whitespace-nowrap">Badminton</span>
+            </a>
         </div>
-    </div>
-
-    <!-- Mobile menu, show/hide based on menu state. -->
-    <div x-show="isOpen" class="md:hidden" id="mobile-menu">
-        <div class="space-y-1 px-2 pb-3 pt-2 sm:px-3">
-            <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-            <a href="{{ route('fights.index') }}"
-                class="{{ request()->is('dashboard/fights*') ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white' }} rounded-md px-3 py-2 text-sm font-medium text-white"
-                aria-current="{{ request()->is('dashboard/fights*') ? 'page' : false }}">Pertandingan</a>
-            <a href="{{ route('players.index') }}"
-                class="{{ request()->is('dashboard/players*') ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white' }} rounded-md px-3 py-2 text-sm font-medium text-white"
-                aria-current="{{ request()->is('dashboard/players*') ? 'page' : false }}">Pemain</a>
-            <a href="{{ route('skors.index') }}"
-                class="{{ request()->is('dashboard/skors*') ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white' }} rounded-md px-3 py-2 text-sm font-medium text-white"
-                aria-current="{{ request()->is('dashboard/skors*') ? 'page' : false }}">Control Skor</a>
-            <a href="{{ route('galleries.index') }}"
-                class="{{ request()->is('dashboard/galleries*') ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white' }} rounded-md px-3 py-2 text-sm font-medium text-white"
-                aria-current="{{ request()->is('dashboard/galleries*') ? 'page' : false }}">Gallery</a>
-            <a href="{{ route('homepage') }}"
-                class="{{ request()->is('/') ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white' }} rounded-md px-3 py-2 text-sm font-medium text-white"
-                aria-current="{{ request()->is('/') ? 'page' : false }}">Live</a>
+        <div class="flex items-center lg:order-2">
+            <button type="button"
+                class="flex mx-3 text-sm bg-gray-800 rounded-full md:mr-0 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600"
+                id="user-menu-button" aria-expanded="false" data-dropdown-toggle="dropdown">
+                <span class="sr-only">Open user menu</span>
+                <img class="w-8 h-8 rounded-full"
+                    src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/michael-gough.png"
+                    alt="user photo" />
+            </button>
+            <!-- Dropdown menu -->
+            <div class="hidden z-50 my-4 w-56 text-base list-none bg-white divide-y divide-gray-100 shadow dark:bg-gray-700 dark:divide-gray-600 rounded-xl"
+                id="dropdown">
+                <div class="py-3 px-4">
+                    <span class="block text-sm font-semibold text-gray-900 dark:text-white">Administrator</span>
+                    <span class="block text-sm text-gray-900 truncate dark:text-white">admin@example.com</span>
+                </div>
+                <ul class="py-1 text-gray-700 dark:text-gray-300" aria-labelledby="dropdown">
+                    <li>
+                        <a href="#"
+                            class="block py-2 px-4 text-sm hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-400 dark:hover:text-white">Account
+                            settings</a>
+                    </li>
+                </ul>
+                <ul class="py-1 text-gray-700 dark:text-gray-300" aria-labelledby="dropdown">
+                    <li>
+                        <a href="#"
+                            class="block py-2 px-4 text-sm hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Sign
+                            out</a>
+                    </li>
+                </ul>
+            </div>
         </div>
     </div>
 </nav>
