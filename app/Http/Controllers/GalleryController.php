@@ -14,7 +14,7 @@ class GalleryController extends Controller
 {
     public function index(): View
     {
-        $galleries = Gallery::get();
+        $galleries = Gallery::filter(request(['search']))->latest()->paginate(10)->withQueryString();
         return view('dashboard.gallery.index', [
             'title' => 'Foto',
             'galleries' => $galleries

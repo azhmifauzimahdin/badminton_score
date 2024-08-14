@@ -13,7 +13,7 @@ class PlayerController extends Controller
 {
     public function index(): View
     {
-        $players =  Player::latest()->get();
+        $players =  Player::filter(request(['search']))->latest()->paginate(10)->withQueryString();
 
         return view('dashboard.player.index', [
             'title' => 'Pemain',

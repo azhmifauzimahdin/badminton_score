@@ -16,12 +16,20 @@
                     {{ session('failed') }}
                 </div>
             @endif
-            <div class="mb-2">
+            <div class="flex justify-between mb-2">
                 <a href="{{ route('players.create') }}">
                     <button class="text-white bg-blue-700 font-medium rounded-lg px-5 py-2.5 me-2 mb-2">
                         Tambah
                         Data</button>
                 </a>
+                <form class="md:w-1/4">
+                    <label for="search" class="sr-only">Search</label>
+                    <div>
+                        <input type="search" id="search" name="search"
+                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg w-full p-2.5"
+                            placeholder="Cari" autocomplete="off" value="{{ request('search') }}" />
+                    </div>
+                </form>
             </div>
             <div class="relative overflow-x-auto">
                 <table class="w-full bg-gray-100">
@@ -37,7 +45,7 @@
                     <tbody>
                         @forelse ($players as $index => $player)
                             <tr class="odd:bg-gray-50 even:bg-gray-100">
-                                <td>{{ $index + 1 }}</td>
+                                <td>{{ $index + $players->firstItem() }}</td>
                                 <td>{{ $player->name }}</td>
                                 <td>{{ $player->description }}</td>
                                 <td>
@@ -69,6 +77,9 @@
                         @endforelse
                     </tbody>
                 </table>
+            </div>
+            <div class="mt-3">
+                {{ $players->onEachSide(0)->links() }}
             </div>
         </div>
     </div>

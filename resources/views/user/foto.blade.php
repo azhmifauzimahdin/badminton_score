@@ -31,7 +31,8 @@
                 @for ($j = $i; $j < $i + 3; $j++)
                     @if ($j < $lengthGalleries)
                         <div>
-                            <img class="h-auto w-full rounded-lg" src="{{ $galleries[$j]?->image }}"
+                            <img class="h-auto w-full rounded-lg shadow-lg"
+                                src="{{ asset('storage/galleries/' . $galleries[$j]?->image) }}"
                                 alt="{{ $galleries[$j]->description }}">
                         </div>
                     @endif

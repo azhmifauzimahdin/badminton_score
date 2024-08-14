@@ -12,7 +12,7 @@ class FightController extends Controller
 {
     public function index(): View
     {
-        $fights = Fight::orderby('startdate')->get();
+        $fights = Fight::orderby('startdate')->filter(request(['search']))->paginate(10)->withQueryString();
         return view('dashboard.fight.index', [
             'title' => 'Pertandingan',
             'fights' => $fights

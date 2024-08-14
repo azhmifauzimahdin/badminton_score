@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -22,6 +23,15 @@ class Fight extends Model
         'startdate',
         'enddate',
         'status'
+    ];
+
+    protected $with = [
+        'playerone',
+        'playertwo',
+        'skors',
+        'skor',
+        'finalskor',
+        'setfight'
     ];
 
     public function playerone(): BelongsTo
@@ -52,5 +62,27 @@ class Fight extends Model
     public function setfight(): HasOne
     {
         return $this->hasOne(FinalSkor::class, 'fightid');
+    }
+
+    public function scopeFilter(Builder $query, array $filters): void
+    {
+        $query->when(
+            $filters['search'] ?? false,
+            function ($query, $search) {
+                return $query->where('venue', 'like', '%' . $search . '%')
+                    ->orwhere('court', $search)
+                    ->orwhere('startdate', 'like', '%' . $search . '%')
+                    ->orWhereHas(
+                        'playerone',
+                        fn($query) =>
+                        $query->where('name', 'like', '%' . $search . '%')
+                    )
+                    ->orWhereHas(
+                        'playertwo',
+                        fn($query) =>
+                        $query->where('name', 'like', '%' . $search . '%')
+                    );
+            }
+        );
     }
 }

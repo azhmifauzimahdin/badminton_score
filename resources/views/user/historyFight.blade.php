@@ -1,9 +1,9 @@
-@extends('layouts/main')
+@extends('layouts.main')
 
 @section('container')
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
         @forelse ($fights as $fight)
-            <div class="w-full bg-white p-4 mb-3 rounded-lg shadow-sm border border-slate-500/20 md:w-8/12 mx-auto">
+            <div class="w-full bg-white p-4 mb-3 rounded-lg shadow-sm border border-slate-500/20">
                 <p class="text-sm opacity-80 mb-4 text-center">{{ $fight->venue }} [Court {{ $fight->court }}] |
                     {{ \Carbon\Carbon::parse($fight->startdate)->format('H:i') }} WIB</p>
                 <div class="grid grid-cols-3">
@@ -57,7 +57,7 @@
                 </div>
             </div>
         @empty
-            <div class="text-center text-sm">Tidak ada histori pertandingan</div>
+            <div class="text-center text-sm col-span-3">Tidak ada histori pertandingan</div>
         @endforelse
     </div>
 @endsection

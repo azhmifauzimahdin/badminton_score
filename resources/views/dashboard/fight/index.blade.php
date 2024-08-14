@@ -11,12 +11,22 @@
                     {{ session('success') }}
                 </div>
             @endif
-            <div class="mb-2">
-                <a href="{{ route('fights.create') }}">
-                    <button class="text-white bg-blue-700 font-medium rounded-lg px-5 py-2.5 me-2 mb-2">
-                        Tambah
-                        Data</button>
-                </a>
+            <div class="flex justify-between mb-2">
+                <div>
+                    <a href="{{ route('fights.create') }}">
+                        <button class="text-white text-nowrap bg-blue-700 font-medium rounded-lg px-5 py-2 me-2 mb-2">
+                            Tambah
+                            Data</button>
+                    </a>
+                </div>
+                <form class="md:w-1/4">
+                    <label for="search" class="sr-only">Search</label>
+                    <div>
+                        <input type="search" id="search" name="search"
+                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg w-full p-2.5"
+                            placeholder="Cari" autocomplete="off" value="{{ request('search') }}" />
+                    </div>
+                </form>
             </div>
             <div class="relative overflow-x-auto">
                 <table class="w-full bg-gray-100">
@@ -34,7 +44,7 @@
                     <tbody>
                         @forelse ($fights as $index => $fight)
                             <tr class="odd:bg-gray-50 even:bg-gray-100">
-                                <td>{{ $index + 1 }}</td>
+                                <td>{{ $index + $fights->firstItem() }}</td>
                                 <td class="text-nowrap">{{ $fight->playerone->name }}</td>
                                 <td class="text-nowrap">{{ $fight->playertwo->name }}</td>
                                 <td>{{ $fight->venue }}</td>
@@ -65,6 +75,9 @@
                         @endforelse
                     </tbody>
                 </table>
+            </div>
+            <div class="mt-3">
+                {{ $fights->onEachSide(0)->links() }}
             </div>
         </div>
     </div>
