@@ -59,7 +59,7 @@
 
                                 <div class="text-center mb-1">
                                     <span id="setid{{ $fightLive->id }}"
-                                        class="border-solid border-2 border-white rounded-full text-center px-3 text-sm font-medium">{{ $fightLive->finalSkor ? $fightLive->finalSkor->set : 1 }}</span>
+                                        class="border-solid border-2 border-white rounded-full text-center px-3 text-sm font-medium">{{ $fightLive->finalskor ? $fightLive->finalskor->set : 1 }}</span>
                                 </div>
                                 <div class="text-xs flex justify-between px-2">
                                     <span

@@ -4,8 +4,9 @@
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
         @forelse ($fights as $fight)
             <div class="w-full bg-white p-4 mb-3 rounded-lg shadow-sm border border-slate-500/20">
-                <p class="text-sm opacity-80 mb-4 text-center">{{ $fight->venue }} [Court {{ $fight->court }}] |
+                <p class="text-sm text-center">{{ \Carbon\Carbon::parse($fight->startdate)->isoFormat('D MMMM Y') }} |
                     {{ \Carbon\Carbon::parse($fight->startdate)->format('H:i') }} WIB</p>
+                <p class="text-sm opacity-80 text-center mb-3">{{ $fight->venue }} [Court {{ $fight->court }}] </p>
                 <div class="grid grid-cols-3">
                     <div class="flex flex-col">
                         <div class="aspect-square w-3/4 mx-auto overflow-hidden rounded-full pt-1 bg-blob">

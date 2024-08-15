@@ -38,6 +38,7 @@
                             <th>VENUE</th>
                             <th>COURT</th>
                             <th>JADWAL</th>
+                            <th>STATUS</th>
                             <th>AKSI</th>
                         </tr>
                     </thead>
@@ -51,8 +52,27 @@
                                 <td class="text-center">{{ $fight->court }}</td>
                                 <td class="text-nowrap">{{ \Carbon\Carbon::parse($fight->startdate)->format('d/m/Y H:i') }}
                                 </td>
+                                <td class="text-center">
+                                    @if ($fight->matchstatus == 'Belum Mulai')
+                                        <span
+                                            class="text-xs text-nowrap font-medium border border-red-500 bg-red-500/15 text-red-500 rounded-full py-1 px-2">
+                                            {{ $fight->matchstatus }}
+                                        </span>
+                                    @elseif ($fight->matchstatus == 'Berlangsung')
+                                        <span
+                                            class="text-xs font-medium border border-yellow-300 bg-yellow-300/15 text-yellow-300 rounded-full py-1 px-2">
+                                            {{ $fight->matchstatus }}
+                                        </span>
+                                    @else
+                                        <span
+                                            class="text-xs font-medium border border-green-500 bg-green-500/15 text-green-500 rounded-full py-1 px-2">
+                                            {{ $fight->matchstatus }}
+                                        </span>
+                                    @endif
+                                </td>
                                 <td class="text-nowrap">
-                                    <a href="{{ route('fights.edit', $fight->id) }}">
+                                    <a href="{{ route('fights.edit', $fight->id) }}"
+                                        class="{{ $fight->matchstatus != 'Belum Mulai' ? 'hidden' : '' }}">
                                         <button id="check" class="text-white bg-yellow-400 rounded-lg px-2.5 py-1 me-1">
                                             <i class="fa-regular fa-pen-to-square"></i>
                                         </button>
@@ -70,7 +90,7 @@
                             </tr>
                         @empty
                             <tr class="odd:bg-gray-50 even:bg-gray-100">
-                                <td colspan="5" class="text-center">Data masih kosong.</td>
+                                <td colspan="8" class="text-center">Data masih kosong.</td>
                             </tr>
                         @endforelse
                     </tbody>

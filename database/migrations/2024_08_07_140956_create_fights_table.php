@@ -17,7 +17,7 @@ return new class extends Migration
             $table->unsignedBigInteger('playertwoid');
             $table->string('venue', 100);
             $table->string('court', 100)->default(1);
-            $table->timestamp('startdate');
+            $table->timestamp('startdate')->nullable();
             $table->boolean('status')->default(0);
             $table->timestamps();
         });
