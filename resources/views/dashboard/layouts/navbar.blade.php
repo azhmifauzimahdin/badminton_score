@@ -31,8 +31,10 @@
             <div class="hidden z-50 my-4 w-56 text-base list-none bg-white divide-y divide-gray-100 shadow dark:bg-gray-700 dark:divide-gray-600 rounded-xl"
                 id="dropdown">
                 <div class="py-3 px-4">
-                    <span class="block text-sm font-semibold text-gray-900 dark:text-white">Administrator</span>
-                    <span class="block text-sm text-gray-900 truncate dark:text-white">admin@example.com</span>
+                    <span
+                        class="block text-sm font-semibold text-gray-900 dark:text-white">{{ auth()->user()->name }}</span>
+                    <span
+                        class="block text-sm text-gray-900 truncate dark:text-white">{{ auth()->user()->email }}</span>
                 </div>
                 <ul class="py-1 text-gray-700 dark:text-gray-300" aria-labelledby="dropdown">
                     <li>
@@ -43,9 +45,12 @@
                 </ul>
                 <ul class="py-1 text-gray-700 dark:text-gray-300" aria-labelledby="dropdown">
                     <li>
-                        <a href="#"
-                            class="block py-2 px-4 text-sm hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Sign
-                            out</a>
+                        <form action="{{ route('logout') }}" method="POST">
+                            @csrf
+                            <button type="submit"
+                                class="w-full text-left py-2 px-4 text-sm hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Log
+                                out</button>
+                        </form>
                     </li>
                 </ul>
             </div>

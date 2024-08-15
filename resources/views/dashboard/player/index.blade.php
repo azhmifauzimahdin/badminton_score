@@ -7,12 +7,12 @@
         </div>
         <div class="p-4">
             @if (session()->has('success'))
-                <div class="p-4 mb-4 text-sm text-green-800 rounded-lg bg-green-50" role="alert">
+                <div class="p-4 mb-4 text-sm text-green-800 rounded-lg bg-green-50 border border-green-800/25" role="alert">
                     {{ session('success') }}
                 </div>
             @endif
             @if (session()->has('failed'))
-                <div class="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50" role="alert">
+                <div class="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 border border-red-800/25" role="alert">
                     {{ session('failed') }}
                 </div>
             @endif

@@ -19,11 +19,13 @@
                         <a href="{{ route('gallery') }}"
                             class="{{ request()->is('galleries') ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white' }} rounded-md px-3 py-2 text-sm font-medium text-white"
                             aria-current="{{ request()->is('galleries') ? 'page' : false }}">Foto</a>
-                        <a href="{{ route('fights.index') }}"
-                            class="{{ request()->is('dashboard/fights*') ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white' }} rounded-md px-3 py-2 text-sm font-medium text-white"
+                        <a href="{{ route('login.index') }}"
+                            class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium border border-gray-50"
                             aria-current="{{ request()->is('dashboard/fights*') ? 'page' : false }}">Dashboard</a>
-
                     </div>
+                </div>
+                <div>
+
                 </div>
             </div>
 
@@ -63,8 +65,8 @@
             <a href="{{ route('gallery') }}"
                 class="{{ request()->is('galleries') ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white' }} rounded-md px-3 py-2 text-sm font-medium text-white"
                 aria-current="{{ request()->is('galleries') ? 'page' : false }}">Foto</a>
-            <a href="{{ route('fights.index') }}"
-                class="{{ request()->is('dashboard/fights*') ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white' }} rounded-md px-3 py-2 text-sm font-medium text-white"
+            <a href="{{ route('login.index') }}"
+                class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium border border-gray-50"
                 aria-current="{{ request()->is('dashboard/fights*') ? 'page' : false }}">Dashboard</a>
         </div>
     </div>

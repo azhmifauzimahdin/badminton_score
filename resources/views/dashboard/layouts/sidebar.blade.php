@@ -35,13 +35,6 @@
                     <span class="ml-3">Foto</span>
                 </a>
             </li>
-            <li>
-                <a href="{{ route('homepage') }}"
-                    class="bg-white text-gray-900 flex items-center py-2 px-3 text-base font-medium rounded-lg hover:bg-gray-100">
-                    <i class="fa-solid fa-right-from-bracket text-gray-500 w-1/12"></i>
-                    <span class="ml-3">Live</span>
-                </a>
-            </li>
         </ul>
     </div>
 </aside>
