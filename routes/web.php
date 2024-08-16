@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [HomepageController::class, 'index'])->name('homepage');
 Route::get('/fights', [HomepageController::class, 'historyFight'])->name('fight.history');
 Route::get('/fights/{id}', [HomepageController::class, 'show'])->name('fight.detail');
+Route::get('/galleries', [GalleryController::class, 'galleries'])->name('gallery');
 
 Route::get('/liveskor/{id}', [HomepageController::class, 'liveSkor'])->name('liveskor');
 Route::get('/liveskor', [HomepageController::class, 'liveskorNow'])->name('liveskornow');
@@ -20,7 +21,6 @@ Route::resource('/dashboard/players', PlayerController::class)->except('show')->
 Route::resource('/dashboard/fights', FightController::class)->except('show')->middleware('auth');
 Route::resource('/dashboard/skors', SkorController::class)->except('show')->middleware('auth');
 Route::resource('/dashboard/galleries', GalleryController::class)->except('show')->middleware('auth');
-Route::get('/galleries', [GalleryController::class, 'galleries'])->name('gallery')->middleware('auth');
 
 Route::controller(LoginController::class)->group(function () {
   Route::get('/login', 'index')->name('login.index')->middleware('guest');

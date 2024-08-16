@@ -5,6 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://kit.fontawesome.com/0546d73a27.js" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 
     <title>{{ $title }}</title>
@@ -25,6 +27,8 @@
             </div>
         </div>
     </section>
+
+    @stack('script')
 </body>
 
 </html>

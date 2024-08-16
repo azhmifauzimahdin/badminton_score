@@ -23,8 +23,15 @@
         </div>
         <div>
             <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Password</label>
-            <input type="password" name="password" id="password" placeholder="••••••••"
-                class="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+            <div id="show_hide_password" class="relative">
+                <input type="password" name="password" id="password" placeholder="••••••••"
+                    class="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                <div class="absolute end-2.5 bottom-2.5">
+                    <a class="cursor-pointer">
+                        <i class="fa-regular fa-eye-slash"></i>
+                    </a>
+                </div>
+            </div>
             @error('password')
                 <span class="text-red-600 text-xs">{{ $message }}</span>
             @enderror
@@ -32,8 +39,15 @@
         <div>
             <label for="password_confirmation"
                 class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Konfirmasi Password</label>
-            <input type="password" name="password_confirmation" id="password_confirmation" placeholder="••••••••"
-                class="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+            <div id="show_hide_password_confirmation" class="relative">
+                <input type="password" name="password_confirmation" id="password_confirmation" placeholder="••••••••"
+                    class="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                <div class="absolute end-2.5 bottom-2.5">
+                    <a class="cursor-pointer">
+                        <i class="fa-regular fa-eye-slash"></i>
+                    </a>
+                </div>
+            </div>
             @error('password_confirmation')
                 <span class="text-red-600 text-xs">{{ $message }}</span>
             @enderror
@@ -47,3 +61,34 @@
         </div>
     </form>
 @endsection
+
+@push('script')
+    <script>
+        $(document).ready(function() {
+            $("#show_hide_password a").on('click', function(event) {
+                event.preventDefault();
+                if ($('#show_hide_password input').attr("type") == "text") {
+                    $('#show_hide_password input').attr('type', 'password');
+                    $('#show_hide_password i').addClass("fa-eye-slash");
+                    $('#show_hide_password i').removeClass("fa-eye");
+                } else if ($('#show_hide_password input').attr("type") == "password") {
+                    $('#show_hide_password input').attr('type', 'text');
+                    $('#show_hide_password i').removeClass("fa-eye-slash");
+                    $('#show_hide_password i').addClass("fa-eye");
+                }
+            });
+            $("#show_hide_password_confirmation a").on('click', function(event) {
+                event.preventDefault();
+                if ($('#show_hide_password_confirmation input').attr("type") == "text") {
+                    $('#show_hide_password_confirmation input').attr('type', 'password');
+                    $('#show_hide_password_confirmation i').addClass("fa-eye-slash");
+                    $('#show_hide_password_confirmation i').removeClass("fa-eye");
+                } else if ($('#show_hide_password_confirmation input').attr("type") == "password") {
+                    $('#show_hide_password_confirmation input').attr('type', 'text');
+                    $('#show_hide_password_confirmation i').removeClass("fa-eye-slash");
+                    $('#show_hide_password_confirmation i').addClass("fa-eye");
+                }
+            });
+        });
+    </script>
+@endpush
